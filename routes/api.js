@@ -53,7 +53,6 @@ module.exports = function (app) {
       let item = await service.createItem(req.body, req.file)
       res.status(200).send(item)
     })
-
   })
 
   app.get('/', async (req, res, next) => {

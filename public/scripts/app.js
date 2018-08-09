@@ -1,49 +1,48 @@
 $(function () {
 
-  $( "#dialog" ).dialog({ autoOpen: false })
+  $('#dialog').dialog({autoOpen: false})
 
   $('#sortable').sortable({
     start: (event, ui) => {
-      ui.item.data('originIndex', ui.item.index());
+      ui.item.data('originIndex', ui.item.index())
     },
-    change: ( event, ui ) => {
-      var originIndex = ui.item.data('originIndex');
-      var currentIndex = ui.placeholder.index();
-      if (currentIndex > originIndex)
-      {
-        currentIndex -= 1;
+    change: (event, ui) => {
+      var originIndex = ui.item.data('originIndex')
+      var currentIndex = ui.placeholder.index()
+      if (currentIndex > originIndex) {
+        currentIndex -= 1
       }
     },
-    stop: ( event, ui ) => {
+    stop: (event, ui) => {
     },
-    update: function(event, ui) {
-      let order = $(this).sortable('toArray');
-      let data = [];
-      let pos=0;
-      for (_id of order){
-        data.push({id: _id, position: pos});
-        pos++;
+    update: function (event, ui) {
+      let order = $(this).sortable('toArray')
+      let data = []
+      let pos = 0
+      for (_id of order) {
+        data.push({id: _id, position: pos})
+        pos++
       }
 
       $.ajax({
-        data:  JSON.stringify(order),
+        data: JSON.stringify(order),
         method: 'POST',
         url: '/items/order',
         contentType: 'application/json',
         type: 'json',
         success: (item) => {
-         console.log("ok order");
+          console.log('ok order')
         },
         error: () => {
-          alert('Error');
+          alert('Error')
         }
-      });
+      })
     }
   })
 
-  var _URL = window.URL || window.webkitURL;
+  var _URL = window.URL || window.webkitURL
 
-  function insertItem(item) {
+  function insertItem (item) {
     $('#sortable').append(
       `<div class="row custom-1" id="${item._id}">
           <div class="col-4">
@@ -58,24 +57,24 @@ $(function () {
           </div>
         </div>`)
 
-    let counter = Number($( "#counter" ).val()) + 1;
-    $( "#counter" ).val(counter);
+    let counter = Number($('#counter').val()) + 1
+    $('#counter').val(counter)
   }
 
   function getItems () {
     $.get('/items', (data) => {
       for (item of data) {
-        insertItem(item);
+        insertItem(item)
       }
     })
   }
 
-  getItems ();
+  getItems()
 
-  $( "#addItemForm" ).submit((event) => {
-    event.preventDefault();
+  $('#addItemForm').submit((event) => {
+    event.preventDefault()
 
-    let data = new FormData($('#addItemForm')[0]);
+    let data = new FormData($('#addItemForm')[0])
 
     $.ajax({
       data: data,
@@ -85,45 +84,44 @@ $(function () {
       method: 'POST',
       url: '/item',
       success: (item) => {
-        $('#closeModal').trigger( "click" );
+        $('#closeModal').trigger('click')
         insertItem(item)
       },
       error: () => {
-        alert('Error');
+        alert('Error')
       }
-    });
-  });
+    })
+  })
 
   $('#addItem').click(() => {
-    $( "#ex1" ).dialog();
-  });
+    $('#ex1').dialog()
+  })
 
   $('#inputFile').change(function () {
-    var file = $(this)[0].files[0];
+    var file = $(this)[0].files[0]
 
-    img = new Image();
-    let imgwidth = 0;
-    let imgheight = 0;
-    let maxwidth = 350;
-    let maxheight = 350;
+    img = new Image()
+    let imgwidth = 0
+    let imgheight = 0
+    let maxwidth = 350
+    let maxheight = 350
 
-    img.src = _URL.createObjectURL(file);
-    img.onload = function() {
-      imgwidth = this.width;
-      imgheight = this.height;
+    img.src = _URL.createObjectURL(file)
+    img.onload = function () {
+      imgwidth = this.width
+      imgheight = this.height
 
-      if(imgwidth <= maxwidth && imgheight <= maxheight){
-      }else{
-        alert("Image should be <= 320px x 320px");
-        $('#inputFile').val("");
-        return;
+      if (imgwidth <= maxwidth && imgheight <= maxheight) {
+      } else {
+        alert('Image should be <= 320px x 320px')
+        $('#inputFile').val('')
+        return
       }
-    };
-    img.onerror = function() {
-      $("#response").text("not a valid file: " + file.type);
     }
-  });
-
+    img.onerror = function () {
+      $('#response').text('not a valid file: ' + file.type)
+    }
+  })
 
 })
 
@@ -134,22 +132,20 @@ function deleteItem (id) {
     contentType: 'application/json',
     type: 'json',
     success: () => {
-      $(`#${id}`).remove();
+      $(`#${id}`).remove()
 
-      let counter = Number($( "#counter" ).val()) - 1;
-      $( "#counter" ).val(counter);
+      let counter = Number($('#counter').val()) - 1
+      $('#counter').val(counter)
     },
     error: () => {
-      alert('Error');
+      alert('Error')
     }
-  });
-};
-
-
+  })
+}
 
 function editItem (id) {
-  let description = $(`#${id} > #itemDescription`).text().trim();
-};
+  let description = $(`#${id} > #itemDescription`).text().trim()
+}
 
 
 

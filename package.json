@@ -9,6 +9,11 @@
     "std": "standard"
   },
   "author": "Leonardo Ampuero",
+  "standard": {
+    "ignore": [
+      "/public"
+    ]
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",

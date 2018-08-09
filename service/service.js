@@ -2,7 +2,6 @@
 const Item = require('../models/item.js')
 
 class Service {
-
   async getItems () {
     try {
       return await Item.find({}).sort({position: 1})

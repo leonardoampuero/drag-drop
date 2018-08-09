@@ -5,8 +5,8 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const path = require('path')
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://mongo:27017/test');
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://mongo:27017/test')
 
 let port = 3000
 
