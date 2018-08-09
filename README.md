@@ -1,6 +1,6 @@
 # Drag and drop jquery
 
-<img src="https://s3-sa-east-1.amazonaws.com/ampuero/recording.gif" width="600">
+![Demo](https://s3-sa-east-1.amazonaws.com/ampuero/recording.gif)
 
 ## How it works
 
@@ -9,7 +9,7 @@
 * Save items on MongoDB
 * Order the items and save the position immediately
 
-##Techs - libraries
+## Techs - libraries
 
 * Vanilla Javascript + jquery
 * Nodejs for the API
