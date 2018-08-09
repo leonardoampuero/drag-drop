@@ -1,6 +1,7 @@
 # Drag and drop jquery
 
-![Demo](https://s3-sa-east-1.amazonaws.com/ampuero/recording.gif)
+Demo
+https://s3-sa-east-1.amazonaws.com/ampuero/recording.gif
 
 ## How it works
 
