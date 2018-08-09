@@ -1,0 +1,29 @@
+h1 {
+    margin: 10px 0 20px 0;
+    color: white;
+}
+
+.row {
+    margin-bottom: 15px !important;
+}
+
+.custom-1 {
+    background-color: rgba(245, 245, 245, 0.4);
+    border-radius: 25px;
+}
+
+body {
+    background-image: url('../resources/bg.png');
+}
+
+img {
+    padding: 15px;
+}
+
+.custom-description {
+    padding: 20px 10px 0 5px;
+}
+
+.text-custom {
+    color: white;
+}
