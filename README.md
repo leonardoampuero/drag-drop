@@ -21,11 +21,31 @@ https://s3-sa-east-1.amazonaws.com/ampuero/recording.gif
 
 ### Run it
 
-```
+```bash
 > npm install
 > npm start
 ```
 
+### Run docker
+
+```bash
+> docker-compose up
+```
+
+If you get an error such as 
+ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default`
+
+```bash
+> docker-machine restart default
+> docker-machine env default
+> docker-compose up
+```
+
+If you cannot access localhost:3000 check you docker-machine ip
+
+```bash
+> docker-machine ip default
+```
 
 
 

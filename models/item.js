@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 
 const Item = Schema({
   description: {type: String},
-  fileName: { type: String },
-  position: { type: Number , required: true},
+  fileName: {type: String},
+  position: {type: Number, required: true},
   createdAt: {type: Date, 'default': Date.now},
   updatedAt: {type: Date, 'default': Date.now}
 })
